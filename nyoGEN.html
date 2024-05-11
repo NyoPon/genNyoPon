@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <title>Generador de HTML</title>
+    <link rel="stylesheet" href="assets/css/genMovies.css">
+  </head>
+  <body>
+
+          <!--==================== HEADER ====================-->
+          <div class="header">
+            <div class="header-logo">
+              <svg class="i i-ghost" viewBox="0 0 24 24">
+                <path d="M15 9v1m6 0a1 1 0 0 0-18 0v13c5-6 6 0 9 0s4-6 9 0ZM9 9v1"></path>
+               </svg>
+               <div class="setting-right">
+               <button type="button">
+                <svg class="i i-turn-up-left" viewBox="0 0 24 24">
+                  <path d="M9 14 4 9l5-5m11 16v-7a4 4 0 0 0-4-4H4"></path>
+                </svg>
+                
+              </button>
+              <button type="button">
+                <img src="meteoricons/gear.svg" alt="Icono" class="icono">
+                Configurar
+              </button>
+               </div>
+            </div>
+            <div class="header-right">
+              <a href="#home"><Inicio</a>
+              <a href="#contact">Tmdb</a>
+              <a href="#about">Telegram</a>
+              <a href="#about">Telegram</a>
+            </div>
+          </div>
+          
+      <!--==================== MAIN ====================-->
+      
+        <!-- Insert page sections -->
+
+    <section class="container">
+      <header>Generador de entradas</header>
+      <form action="#" class="form" id="html-generator-form">
+        <h4 style="text-align: left">Información pricipal</h4>
+       <div id="input-container">
+        <section class="column">
+        <div class="input-box">
+          <label for="title">Titulo:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Introduce el titulo"
+            required
+          />
+        </div>
+        <br />
+        <div class="input-box">
+          <label for="original-title">Titulo Original:</label>
+          <input
+            type="text"
+            id="original-title"
+            name="original-title"
+            placeholder="Introduce el titulo"
+            required
+          />
+        </div>
+        <br />
+        </section>
+        <br />
+        <div class="input-box">
+          <label
+          for="tmdb-synopsis">
+          </label>Descripción</label>
+          <br />
+          <textarea
+            id="tmdb-synopsis"
+            name="synopsis"
+            rows="4"
+            placeholder="Escribe una descripción"
+          ></textarea>
+        </div>
+        <br />
+        <section class="column">
+        <div class="input-box">
+          <label for="data-duartion">Duración:</label>
+          <input
+            type="text"
+            id="data-duration"
+            name="duration"
+            placeholder="Introduce el titulo"
+            required
+          />
+        </div>
+        <br />
+        <div class="input-box">
+          <label for="data-year">Año:</label>
+          <input
+            type="number"
+            id="data-year"
+            name="year"
+            placeholder="Introduce el titulo"
+            required
+          />
+        </div>
+        <br />
+        <div class="input-box">
+          <label for="data-release-data">Fecha de lanzamiento:</label>
+          <input
+            type="date"
+            id="data-release-data"
+            name="release"
+            placeholder="Introduce el titulo"
+            required
+          />
+        </div>
+        <br />
+        </section>
+        <br />
+        <section class="column">
+        <div class="input-box">
+          <label for="data-genres">Géneros:</label>
+          <input
+            type="text"
+            id="data-genres"
+            name="genres"
+            placeholder="Separados por coma"
+            required
+          />
+        </div>
+        <br />
+        <div class="input-box">
+          <label for="data-youtube-id">Trailer Youtube:</label>
+          <input
+            type="text"
+            id="data-youtube-id"
+            name="youtube-id"
+            placeholder="Id de trailer"
+            required
+          />
+        </div>
+        <br />
+        </section>
+           <div class="input-box">
+               <label for="data-post-type">Imagen de portada:</label>
+               <input
+               type="url"
+               id="data-post-type"
+               name="post"
+               placeholder="Introduce la URL de la imagen" required />
+               <button type="button" class="remove-button">X</button>
+               </div>
+               </div>
+               <button type="button" id="add-button">Agregar más</button>
+        <br />
+        <div class="input-box">
+          <label
+          for="data-backdrop">Imagen de fondo:</label>
+          <input
+          type="url"
+          id="data-backdrop"
+          name="backdrop" placeholder="Introduce la URL de la imagen" required />
+          <button type="button" class="remove-button">X</button>
+          </div>
+          </div>
+          <button type="button" id="add-button">Agregar más</button>
+   <br />
+   <br />
+        
+        
+
+        <!-- Agrega más campos según tus necesidades -->
+        <button type="button" id="generar-html">Generar HTML</button>
+        <button id="copiar-codigo"><svg class="i i-copy" viewBox="0 0 24 24">
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          <rect width="13" height="13" x="9" y="9" rx="2"></rect>
+        </svg>Copiar Código</button>
+        <br />
+        <div class="text-boxes">
+          <div class="text-box HTMLBox">
+            <div class="topic">HTML Code:</div>
+            <textarea id="HTMLBox" readonly>
+            Codigo html
+            </textarea>
+      </form>
+    </section>
+
+
+
+
+    <script>
+      document
+        .getElementById("generar-html")
+        .addEventListener("click", function () {
+          const dataPoster = document.getElementById("data-post-type").value;
+          const dataSynopsis = document.getElementById("tmdb-synopsis").value;
+          const dataYoutubeID = document.getElementById("data-youtube-id").value;        
+          const dataBackdrop = document.getElementById("data-backdrop").value;
+          const title = document.getElementById("title").value;
+          const originalTitle = document.getElementById("original-title").value;
+          const dataDuration = document.getElementById("data-duration").value;
+          const dataYear = document.getElementById("data-year").value;
+          const releaseData = document.getElementById("data-release-data").value;
+          const genres = document.getElementById("data-genres").value;
+          
+
+          // Reemplaza los marcadores con los valores ingresados
+          const codigoHTML =
+`<div data-post-type="movie" hidden>
+  <img src="${dataPoster}" />
+  <p id="tmdb-synopsis">${dataSynopsis}</p>
+</div>
+<!--más-->
+
+<!-- Genrer NyoPon@v1.0/© nyo-pon.com -->
+
+<div class="headline is-small mb-4">
+  <h2 class="headline__title">Información</h2>
+</div>
+
+<!-- ¡No tocar ninguno de los atributos data a menos que sepas lo que haces! -->
+<ul class="post-details mb-4"  data-youtube-id='${dataYoutubeID}' data-backdrop="${dataBackdrop}">
+  <li data="${title}"><span>Título</span>${title}</li>
+  <li data-original-title="${originalTitle}"><span>Título original</span>${originalTitle}</li>
+  <li data-duartion="${dataDuration}"><span>Duración</span>${dataDuration}</li>
+  <li data-year="${dataYear}"><span>Año</span>${dataYear}</li>
+  <li data-release-data="${releaseData}"><span>Fecha de lanzamiento</span>${releaseData}</li>
+  <li data-genres="${genres}"><span>Géneros</span>${genres}</li>
+</ul>
+
+<!-- Agrega código  adicional en la siguiente línea -->
+            `;
+
+          document.getElementById("HTMLBox").textContent = codigoHTML;
+        });
+
+        document.getElementById("copiar-codigo").addEventListener("click", function() {
+  const htmlOutput = document.getElementById("HTMLBox").value;
+  navigator.clipboard.writeText(htmlOutput).then(() => {
+    alert("Código copiado al portapapeles.");
+  }).catch(err => {
+    console.error('Error copying text: ', err);
+  });
+});
+
+    </script>
+    <script>
+    document.getElementById('add-button').addEventListener('click',
+    function() {
+      var inputContainer = document.getElementById('input-container');
+      var newInputBox = document.createElement('div');
+      newInputBox.innerHTML = `
+      <!-- Lista de servidores -->
+
+
+
+      `; inputContainer.appendChild(newInputBox);
+      newInputBox.querySelector('.remove-button').addEventListener('click',
+      function() { inputContainer.removeChild(newInputBox);
+
+      }); });
+      document.querySelector('.remove-button')
+      .addEventListener('click', function() {
+        var inputContainer = document.getElementById('input-container');
+        var inputBoxes = inputContainer.getElementsByClassName('input-box');
+        if (inputBoxes.length > 1) {
+          inputContainer.removeChild(inputBoxes[
+            inputBoxes.length - 1]);
+            } });
+            </script> 
+
+<script src="assets/js/main.js"></script>
+
+ </body>
+</html>
